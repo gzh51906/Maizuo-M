@@ -37,7 +37,7 @@ const columns = [
 
   const data = []
 
-class UrseLsit extends React.Component{
+class UrseList extends React.Component{
     render(){
         return <div>
                    <Table columns={columns} dataSource={data} />
@@ -45,7 +45,7 @@ class UrseLsit extends React.Component{
     }
 }
 
-export default UrseLsit
+export default UrseList
 
 
 

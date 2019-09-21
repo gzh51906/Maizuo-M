@@ -1,6 +1,6 @@
 import React from 'react';
-
-import Home from './components/Home'
+import Home from './components/Home';
+import { withRouter } from 'react-router-dom';
 
 class App extends React.Component{
 
@@ -11,4 +11,4 @@ class App extends React.Component{
   }
 }
 
-export default App
+export default withRouter(App)
