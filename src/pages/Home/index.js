@@ -4,6 +4,7 @@ import './Home.css';
 import { Route,Switch,withRouter } from 'react-router-dom'
 import UrseList from '../UrseList';
 import AddUrse from '../AddUres';
+import MoveList from '../MoveList';
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -44,6 +45,15 @@ class Home extends React.Component{
                <SubMenu
                   key="sub2"
                   title={<span>
+                           <Icon type="menu" />
+                           <span>影片管理</span>
+                         </span>
+                  }>
+                    <Menu.Item key="/home/movelist" onClick={this.goto}>上映列表</Menu.Item>
+               </SubMenu>
+               <SubMenu
+                  key="sub3"
+                  title={<span>
                            <Icon type="file" />
                            <span>订单管理</span>
                          </span>
@@ -64,6 +74,7 @@ class Home extends React.Component{
               <Switch>
                  <Route path="/home/urselist" component={UrseList}/>
                  <Route path="/home/addurse" component={AddUrse}/>
+                 <Route path="/home/movelist" component={MoveList}/>
               </Switch>
 
             </Content>
