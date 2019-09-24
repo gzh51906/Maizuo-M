@@ -1,0 +1,50 @@
+body {
+  background-image: url(../../assets/timg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#components-form-demo-normal-login .login-form {
+  max-width: 300px;
+}
+
+#components-form-demo-normal-login .login-form-forgot {
+  float: right;
+}
+
+#components-form-demo-normal-login .login-form-button {
+  width: 100%;
+}
+
+.ant-form {
+  width: 400px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ant-form .panel-heading {
+  width: 100%;
+  font-size: 18px;
+  color: #58bc58;
+  line-height: 40px;
+  text-align: center;
+}
+
+.login-form-forgot {
+  float: right;
+}
+
+.ant-btn-primary {
+  width: 400px;
+  position: absolute;
+  top: 40px;
+  left: 0;
+}
+
+.login-form-register {
+  position: absolute;
+  left: 0;
+  top: 80px;
+}

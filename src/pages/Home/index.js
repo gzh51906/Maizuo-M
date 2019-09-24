@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 import './Home.css';
-import { Route,Switch,withRouter,Redirect } from 'react-router-dom'
+import { Route,Switch,withRouter } from 'react-router-dom'
 import UrseList from '../UrseList';
 import AddUrse from '../AddUres';
 
@@ -38,8 +38,8 @@ class Home extends React.Component{
                            <span>用户管理</span>
                          </span>
                   }>
-                    <Menu.Item key="/urselist" onClick={this.goto}>用户列表</Menu.Item>
-                    <Menu.Item key="/addurse" onClick={this.goto}>添加用户</Menu.Item>
+                    <Menu.Item key="/home/urselist" onClick={this.goto}>用户列表</Menu.Item>
+                    <Menu.Item key="/home/addurse" onClick={this.goto}>添加用户</Menu.Item>
                </SubMenu>
                <SubMenu
                   key="sub2"
@@ -62,9 +62,8 @@ class Home extends React.Component{
                  <Breadcrumb.Item>Bill</Breadcrumb.Item>
               </Breadcrumb>
               <Switch>
-                 <Route path="/urselist" component={UrseList}/>
-                 <Route path="/addurse" component={AddUrse}/>
-                 <Redirect from="/" to="urselist"/>
+                 <Route path="/home/urselist" component={UrseList}/>
+                 <Route path="/home/addurse" component={AddUrse}/>
               </Switch>
 
             </Content>
