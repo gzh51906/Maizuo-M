@@ -11,13 +11,13 @@ const columns = [
     },
     {
       title: '电影名称',
-      dataIndex: 'movename',
-      key: 'movename',
+      dataIndex: 'name',
+      key: 'name',
     },
     {
       title: '制作国家',
-      dataIndex: 'country',
-      key: 'country',
+      dataIndex: 'nation',
+      key: 'nation',
     },
     {
       title: '语言',
@@ -26,8 +26,8 @@ const columns = [
     },
     {
       title: '电影时长',
-      key: 'movetime',
-      dataIndex: 'movetime',
+      key: 'runtime',
+      dataIndex: 'runtime',
     },
     {
       title: '操作',
@@ -61,22 +61,22 @@ class MoveList extends React.Component{
 
     async componentDidMount(){
         let {data:filmlist} = await api.get({
-            movename: 'name',
-            country:  'nation',
+            name: 'name',
+            nation:  'nation',
             language: 'language',
-            movetime: 'runtime'
+            runtime: 'runtime'
         })
         this.setState({
             filmlist
         })
-        console.log('lisy',this.state.filmlist);
-        
     }
 
     render(){
         let { filmlist } = this.state
         return <div>
-                   <Table columns={columns} dataSource={filmlist} />
+                   <Table columns={columns} 
+                          dataSource={filmlist}
+                          rowKey={filmlist => filmlist.filmId} />
                </div>
     }
 }

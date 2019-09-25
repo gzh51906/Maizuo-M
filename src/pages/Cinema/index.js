@@ -37,7 +37,7 @@ const columns = [
 
   const data = []
 
-class Cinema extends React.Component{
+class AddUrse extends React.Component{
     render(){
         return <div>
                    <Table columns={columns} dataSource={data} />
@@ -45,7 +45,7 @@ class Cinema extends React.Component{
     }
 }
 
-export default Cinema
+export default AddUrse
 
 
 

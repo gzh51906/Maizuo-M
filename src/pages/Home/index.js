@@ -5,6 +5,7 @@ import { Route,Switch,withRouter } from 'react-router-dom'
 import UrseList from '../UrseList';
 import AddUrse from '../AddUres';
 import MoveList from '../MoveList';
+import Cinema from '../Cinema'
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -41,6 +42,7 @@ class Home extends React.Component{
                   }>
                     <Menu.Item key="/home/urselist" onClick={this.goto}>用户列表</Menu.Item>
                     <Menu.Item key="/home/addurse" onClick={this.goto}>添加用户</Menu.Item>
+                    <Menu.Item key="/home/cinema" onClick={this.goto}>影院列表</Menu.Item>
                </SubMenu>
                <SubMenu
                   key="sub2"
@@ -75,6 +77,7 @@ class Home extends React.Component{
                  <Route path="/home/urselist" component={UrseList}/>
                  <Route path="/home/addurse" component={AddUrse}/>
                  <Route path="/home/movelist" component={MoveList}/>
+                 <Route path="/home/cinema" component={Cinema}/>
               </Switch>
 
             </Content>
