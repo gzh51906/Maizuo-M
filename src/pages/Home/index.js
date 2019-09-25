@@ -5,7 +5,8 @@ import { Route,Switch,withRouter } from 'react-router-dom'
 import UrseList from '../UrseList';
 import AddUrse from '../AddUres';
 import MoveList from '../MoveList';
-import Cinema from '../Cinema'
+import Cinema from '../Cinema';
+import AddMove from '../AddMove';
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -78,6 +79,7 @@ class Home extends React.Component{
                  <Route path="/home/addurse" component={AddUrse}/>
                  <Route path="/home/movelist" component={MoveList}/>
                  <Route path="/home/cinema" component={Cinema}/>
+                 <Route path="/home/addmove" component={AddMove}/>
               </Switch>
 
             </Content>

@@ -34,25 +34,12 @@ const columns = [
       key: 'operation',
       render: () => (
         <div>
-            <Button>点击</Button>
+            <Button>编辑</Button>
+            <Button type="danger">删除</Button>
         </div>
       ),
     }
   ];
-
-// const data = [{
-//     key: 1,
-//     movename: "扫毒",
-//     country: "中国",
-//     language: "简体中文",
-//     movetime: "107分钟"
-//   },{
-//     key:2,
-//     movename: "速度与激情",
-//     country: "美国",
-//     language: "英文",
-//     movetime: "131分钟"
-// }]
 
 class MoveList extends React.Component{
     state={
@@ -71,9 +58,14 @@ class MoveList extends React.Component{
         })
     }
 
+    goto = () => {
+      this.props.history.push('/home/addmove'); 
+    }
+
     render(){
         let { filmlist } = this.state
         return <div>
+                   <Button onClick={this.goto}>添加</Button>
                    <Table columns={columns} 
                           dataSource={filmlist}
                           rowKey={filmlist => filmlist.filmId} />
