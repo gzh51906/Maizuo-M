@@ -6,6 +6,7 @@ const { token, formatData } = require('../utils');
 
 // 引入路由文件
 const flimRouter = require('./film');
+const cinemaRouter = require('./cinema');
 
 
 
@@ -27,6 +28,7 @@ Router.use((req, res, next) => {
 // 商品
 
 Router.use('/film', flimRouter);
+Router.use('/cinema', cinemaRouter);
 Router.get('/verify', (req, res) => {
     // 获取前端传入的token
     // 对token进行校验

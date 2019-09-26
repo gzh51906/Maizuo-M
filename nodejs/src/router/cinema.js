@@ -2,18 +2,39 @@ const express = require('express');
 
 const Router = express.Router();
 
-const { insert, remove, find } = require('../db/mongo');
+const { insert, remove, find, update } = require('../db/mongo');
 
 const { formatData } = require('../utils');
 
-// 获取茶语文章：get /user
-Router.get('/check', async (req, res) => {
-    let { skip, limit, sort, asc } = req.query;
-    let data = await find('yulist', {}, { skip, limit, sort, asc });
+// 电影院列表
+Router.get('/allcinema', async (req, res) => {
+    let { skip, limit, sort, asc, _id } = req.query;
+    let data = await find('cinema', {}, { skip, limit, sort, asc });
     // console.log(data);
 
     res.send(formatData({ data }))
 })
+
+// 根据Id获取电影院
+Router.get('/idcinema', async (req, res) => {
+    let { skip, limit, sort, asc, _id } = req.query;
+    let data = await find('cinema', { _id }, { skip, limit, sort, asc });
+    // console.log(data);
+
+    res.send(formatData({ data }))
+})
+
+// 根据ID更改电影院里的值
+Router.patch('/upcinema', async (req, res) => {
+    let { _id, name, address, districtName, phone, lowPrice, notice } = req.body
+    console.log({ _id, name, address, districtName, phone, lowPrice, notice })
+    let data = await update('cinema', { _id }, { $set: { name, address, districtName, phone, lowPrice, notice } })
+    res.send(formatData({ data }))
+})
+
+
+
+
 
 //获取茶语商品列表
 Router.get('/goodslist', async (req, res) => {

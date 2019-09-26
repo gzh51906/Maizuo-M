@@ -57,8 +57,12 @@ exports.update = async (colName, query, data) => {
     // colName：集合名称
     // query: 查询条件
     // data: 更新的数据
+    console.log(query, data)
     let { db, client } = await connect();
 
+    if (query._id) {
+        query._id = ObjectId(query._id);
+    }
     //  获取集合
     let collection = db.collection(colName);
 
@@ -80,6 +84,7 @@ exports.find = async (colName, query = {}, { sort, limit, skip, asc } = {}) => {
 
     //  针对id进行处理
     // '5d5667d8f174c9ca8ea897d8' -> ObjectId("5d5667d8f174c9ca8ea897d8")
+    console.log(query._id)
     if (query._id) {
         query._id = ObjectId(query._id);
     }
