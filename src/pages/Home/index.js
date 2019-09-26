@@ -7,6 +7,7 @@ import AddUrse from '../AddUres';
 import MoveList from '../MoveList';
 import Cinema from '../Cinema';
 import Editcinema from '../Editcinema'
+import AddMove from '../AddMove';
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -79,6 +80,7 @@ class Home extends React.Component {
               <Route path="/home/addurse" component={AddUrse} />
               <Route path="/home/movelist" component={MoveList} />
               <Route path="/home/cinema" component={Cinema} />
+              <Route path="/home/addmove" component={AddMove} />
               <Route path="/home/editcinema/:id" component={Editcinema} />
             </Switch>
 
