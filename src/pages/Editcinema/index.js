@@ -104,6 +104,7 @@ class Editcinema extends Component {
 
         // console.log(this.state.cinemaAll)
         let data = await Api.patchcinema('http://localhost:1906/cinema/upcinema', { _id: this.state.cinemaAll._id, name: this.state.name, address: this.state.address, districtName: this.state.districtName, phone: this.state.phone, lowPrice: this.state.price, notice: this.state.tips })
+        alert("修改成功")
     }
 
 

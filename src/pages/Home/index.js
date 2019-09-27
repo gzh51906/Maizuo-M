@@ -8,6 +8,8 @@ import MoveList from '../MoveList';
 import Cinema from '../Cinema';
 import Editcinema from '../Editcinema'
 import AddMove from '../AddMove';
+import Hotfilm from '../Hotfilm';
+import Addfilm from '../Addfilm'
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -54,6 +56,7 @@ class Home extends React.Component {
               </span>
               }>
               <Menu.Item key="/home/movelist" onClick={this.goto}>上映列表</Menu.Item>
+              <Menu.Item key="/home/hotfilm" onClick={this.goto}>影厅热映</Menu.Item>
             </SubMenu>
             <SubMenu
               key="sub3"
@@ -82,6 +85,8 @@ class Home extends React.Component {
               <Route path="/home/cinema" component={Cinema} />
               <Route path="/home/addmove" component={AddMove} />
               <Route path="/home/editcinema/:id" component={Editcinema} />
+              <Route path="/home/hotfilm" component={Hotfilm} />
+              <Route path="/home/addfilm" component={Addfilm} />
             </Switch>
 
           </Content>
