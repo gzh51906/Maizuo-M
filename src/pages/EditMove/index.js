@@ -1,9 +1,10 @@
 import React from 'react';
 import { Input,Col,Button } from 'antd';
 import axios from 'axios';
-import './addmove.css'
+import './editmove.css'
+import Api from '../../api'
 
-class AddMove extends React.Component{
+class EditMove extends React.Component{
 
     state = {
         //电影名称
@@ -21,6 +22,21 @@ class AddMove extends React.Component{
         //电影类型
         category: ''
     }
+
+    // componentDidMount = async () => {
+    //     let {data:filmlist} = await Api.get({
+    //         name: 'name',
+    //         filmId: 'filmId',
+    //         nation:  'nation',
+    //         language: 'language',
+    //         runtime: 'runtime',
+    //         director: 'director',
+    //         category: 'category'
+    //     })
+    //     this.setState({
+    //         filmlist:filmlist
+    //     })
+    // }
 
     Movename = ({ target: { value } }) => {
         this.setState({ name: value })
@@ -50,16 +66,9 @@ class AddMove extends React.Component{
         this.setState({ category: value })
     }
 
-    SaveData= async ()=>{
-        await axios.post("http://localhost:1906/film/",{
-            name:this.state.name,
-            filmId:this.state.filmId,
-            nation:this.state.nation,
-            language:this.state.language,
-            runtime:this.state.runtime,
-            director:this.state.director,
-            category:this.state.category
-      })
+    editConfirm = () => {
+        console.log(this.props.match.params.id);
+        console.log(this);
     }
 
     render(){
@@ -109,11 +118,11 @@ class AddMove extends React.Component{
                    </Col>
                 </div>
                 <div className='btn'>
-                    <Button type="danger" onClick={this.SaveData}>确认保存</Button>
+                    <Button type="danger" onClick={this.editConfirm}>确认修改</Button>
                 </div>
             </div>           
         )
     }
 }
 
-export default AddMove
+export default EditMove

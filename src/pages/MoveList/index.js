@@ -24,6 +24,12 @@ class MoveList extends React.Component{
     goto = () => {
       this.props.history.push('/home/addmove'); 
     }
+
+    edit = (idx) => {
+      this.props.history.push({pathname: `/home/editmove/${idx}`});
+      // console.log(idx);
+      
+    }
     
     remove = async (idx) => {
       await axios.delete("http://localhost:1906/film/",{
@@ -67,7 +73,7 @@ class MoveList extends React.Component{
           key: 'actions',
           render: (text,record,idx) => (
             <Button.Group>
-               <Button>编辑</Button>
+               <Button onClick={this.edit.bind(null,this.state.filmlist[idx].filmId)}>编辑</Button>
                <Button type='danger' onClick={this.remove.bind(null,this.state.filmlist[idx].filmId)}>删除</Button>
             </Button.Group>
           ),

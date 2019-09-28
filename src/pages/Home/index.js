@@ -8,6 +8,7 @@ import MoveList from '../MoveList';
 import Cinema from '../Cinema';
 import Editcinema from '../Editcinema'
 import AddMove from '../AddMove';
+import EditMove from '../EditMove'
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -19,14 +20,11 @@ class Home extends React.Component {
   };
 
   onCollapse = collapsed => {
-    console.log(collapsed);
     this.setState({ collapsed });
   };
 
   goto = ({ key }) => {
     this.props.history.push(key);
-    console.log(this);
-
   }
 
   render() {
@@ -82,6 +80,7 @@ class Home extends React.Component {
               <Route path="/home/cinema" component={Cinema} />
               <Route path="/home/addmove" component={AddMove} />
               <Route path="/home/editcinema/:id" component={Editcinema} />
+              <Route path="/home/editmove/:id" component={EditMove} />
             </Switch>
 
           </Content>
