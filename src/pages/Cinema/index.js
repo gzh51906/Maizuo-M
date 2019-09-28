@@ -8,11 +8,15 @@ import './cinema.css'
 
 
 class AddUrse extends React.Component {
-  state = { datalist: [] }
+  state = {
+    datalist: [],
+    //当前页面
+    page: 1
+  }
   async componentDidMount() {
     // 获取电影影院列表
     let { data } = await Api.getcinema('http://localhost:1906/cinema/allcinema')
-    console.log(data)
+    // console.log(data)
     data.forEach((item, i) => {
       item.key = i
       item.lowPrice = item.lowPrice / 100
@@ -20,10 +24,42 @@ class AddUrse extends React.Component {
     this.setState({ datalist: data })
   }
   // 点击编辑跳转到编辑影院页面
-  goto = (id) => {
+  goto = (index) => {
+    let i = index + (this.state.page - 1) * 10
+    let id = this.state.datalist[i]._id
     console.log(id)
     this.props.history.push({ pathname: `/home/editcinema/${id}` })
   }
+  // 页码
+  page = (e) => {
+    // console.log(e.current)
+    this.setState({ page: e.current })
+
+  }
+  // 点击删除
+  remove = async (index) => {
+    let i = index + (this.state.page - 1) * 10
+    let _id = this.state.datalist[i]._id
+    // console.log(_id)
+
+
+    // 删除请求
+    await Api.remove('http://localhost:1906/cinema/removefilm', { _id })
+    let list = this.state.datalist.splice(i, 1)
+    this.setState({ datalist: this.state.datalist })
+
+  }
+  // 搜索
+  search = async (value) => {
+    let { data } = await Api.getcinema('http://localhost:1906/cinema/allcinema', { name: value })
+    // console.log(data)
+    data.forEach((item, i) => {
+      item.key = i
+      item.lowPrice = item.lowPrice / 100
+    })
+    this.setState({ datalist: data })
+  }
+
   render() {
     const columns = [
       {
@@ -79,8 +115,8 @@ class AddUrse extends React.Component {
         width: '10%',
         render: (text, record, index) => (
           <ButtonGroup >
-            <Button size='small' onClick={this.goto.bind(this, this.state.datalist[index]._id)}>编辑</Button>
-            <Button type="danger" size='small'>删除</Button>
+            <Button size='small' onClick={this.goto.bind(this, index)}>编辑</Button>
+            <Button type="danger" size='small' onClick={this.remove.bind(this, index)}>删除</Button>
           </ButtonGroup>
         ),
       },
@@ -88,10 +124,10 @@ class AddUrse extends React.Component {
     return <div className='cinema'>
       <Search
         placeholder="查询影院"
-        onSearch={value => console.log(value)}
+        onSearch={this.search}
         style={{ width: 200 }}
       />
-      <Table columns={columns} dataSource={this.state.datalist} bordered />
+      <Table columns={columns} dataSource={this.state.datalist} bordered onChange={this.page} />
     </div>
   }
 }

@@ -21,8 +21,24 @@ async function patchcinema(url, params) {
     let { data } = await axios.patch(url, params)
     return data
 }
+// 增加影片
+async function post(url, params) {
+    let { data } = await axios.post(url, params)
+
+    return data
+}
+// 删除
+async function remove(url, data) {
+    let date = await axios.delete(url, { data })
+    return date
+}
+
+
 export default {
     get,
     getcinema,
-    patchcinema
+    patchcinema,
+    post,
+    remove
+
 }
