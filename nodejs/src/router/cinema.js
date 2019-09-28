@@ -71,10 +71,24 @@ Router.delete('/removecinema', async (req, res) => {
     res.send(formatData({ data }))
 })
 
+// 获取用户信息
 
+Router.get('/userlist', async (req, res) => {
+    let { skip, limit, sort, asc, name } = req.query;
+    console.log(name)
+    let data = await find('user', {}, { skip, limit, sort, asc, name });
+    // console.log(data);
 
+    res.send(formatData({ data }))
+})
 
-
+// 根据用户电话更改用户订单
+Router.patch('/uporderlist', async (req, res) => {
+    let { phone, oderlist } = req.body
+    // console.log({ phone, oderlist })
+    let data = await update('user', { phone }, { $set: { oderlist } })
+    res.send(formatData({ data }))
+})
 
 
 

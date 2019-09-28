@@ -9,7 +9,8 @@ import Cinema from '../Cinema';
 import Editcinema from '../Editcinema'
 import AddMove from '../AddMove';
 import Hotfilm from '../Hotfilm';
-import Addfilm from '../Addfilm'
+import Addfilm from '../Addfilm';
+import Orderlist from '../Orderlist'
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -65,7 +66,7 @@ class Home extends React.Component {
                 <span>订单管理</span>
               </span>
               }>
-              <Menu.Item key="6">订单列表</Menu.Item>
+              <Menu.Item key="/home/orderlist" onClick={this.goto}>订单列表</Menu.Item>
             </SubMenu>
           </Menu>
         </Sider>
@@ -87,6 +88,7 @@ class Home extends React.Component {
               <Route path="/home/editcinema/:id" component={Editcinema} />
               <Route path="/home/hotfilm" component={Hotfilm} />
               <Route path="/home/addfilm" component={Addfilm} />
+              <Route path="/home/orderlist" component={Orderlist} />
             </Switch>
 
           </Content>

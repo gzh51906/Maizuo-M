@@ -60,7 +60,7 @@ exports.update = async (colName, query, data) => {
     // colName：集合名称
     // query: 查询条件
     // data: 更新的数据
-    console.log(query, data)
+    // console.log(query, data)
     let { db, client } = await connect();
 
     if (query._id) {
