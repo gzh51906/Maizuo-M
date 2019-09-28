@@ -1,8 +1,7 @@
 import React from 'react';
 import { Input,Col,Button } from 'antd';
-import axios from 'axios';
-import './editmove.css'
-import Api from '../../api'
+import axios from 'axios'
+import './editmove.css';
 
 class EditMove extends React.Component{
 
@@ -23,20 +22,17 @@ class EditMove extends React.Component{
         category: ''
     }
 
-    // componentDidMount = async () => {
-    //     let {data:filmlist} = await Api.get({
-    //         name: 'name',
-    //         filmId: 'filmId',
-    //         nation:  'nation',
-    //         language: 'language',
-    //         runtime: 'runtime',
-    //         director: 'director',
-    //         category: 'category'
-    //     })
-    //     this.setState({
-    //         filmlist:filmlist
-    //     })
-    // }
+    async componentDidMount() {
+        let { data:{data} } = await axios.get('http://localhost:1906/film/'+this.props.match.params.id, { params:this.props.match.params })
+        
+        this.setState({ name: data[0].name, 
+                        filmId: data[0].filmId, 
+                        nation: data[0].nation, 
+                        language: data[0].language, 
+                        runtime: data[0].runtime,
+                        director: data[0].director, 
+                        category: data[0].category })
+    }
 
     Movename = ({ target: { value } }) => {
         this.setState({ name: value })
@@ -66,9 +62,16 @@ class EditMove extends React.Component{
         this.setState({ category: value })
     }
 
-    editConfirm = () => {
-        console.log(this.props.match.params.id);
-        console.log(this);
+    editConfirm = async () => {
+        await axios.patch('http://localhost:1906/film/',{
+            name: this.state.name, 
+            filmId: this.state.filmId, 
+            nation: this.state.nation, 
+            language: this.state.language, 
+            runtime: this.state.runtime,
+            director: this.state.director, 
+            category: this.state.category
+        })
     }
 
     render(){
@@ -84,7 +87,7 @@ class EditMove extends React.Component{
                 <div className='addmove-item'>
                    <Col span={5}>电影编号</Col>
                       <Col span={5}>
-                      <Input placeholder="请输入内容" value={this.state.filmId} onChange={this.Movefilmid}/>
+                      <Input disabled placeholder="请输入内容" value={this.state.filmId} onChange={this.Movefilmid}/>
                    </Col>
                 </div>
                 <div className='addmove-item'>

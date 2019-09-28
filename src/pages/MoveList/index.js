@@ -27,8 +27,6 @@ class MoveList extends React.Component{
 
     edit = (idx) => {
       this.props.history.push({pathname: `/home/editmove/${idx}`});
-      // console.log(idx);
-      
     }
     
     remove = async (idx) => {

@@ -27,8 +27,8 @@ Router.delete('/', async(req, res) => {
 })
 
 Router.patch('/', async(req, res) => {
-    let { name,filmId } = req.body;
-    let data = await update('film', { filmId }, {$set:{name}})
+    let { name,filmId,nation,language,runtime,director,category, } = req.body;
+    let data = await update('film', { filmId }, {$set:{name,nation,language,runtime,director,category}})
     res.send(formatData(data))
     
 })
@@ -47,8 +47,9 @@ Router.get('/', async (req, res) => {
 Router.get('/:id', async (req, res) => {
 
     let { id } = req.params;
-    let data = await find('film', { _id: id });
-
+    let data = await find('film', { filmId: id });
+    console.log(data);
+    
     res.send(formatData({ data }))
 })
 
