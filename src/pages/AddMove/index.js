@@ -1,11 +1,17 @@
 import React from 'react';
-import { Input } from 'antd';
+import { Input,Col } from 'antd';
+
+const InputGroup = Input.Group;
 
 class AddMove extends React.Component{
 
     render(){
         return <div>
-                   <Input placeholder="Basic usage" />
+                   <InputGroup size="large">
+                      <Col span={5}>
+                         <Input defaultValue="0571" />
+                      </Col>
+                   </InputGroup>
                </div>
     }
 }

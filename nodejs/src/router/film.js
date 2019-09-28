@@ -8,18 +8,17 @@ const { formatData } = require('../utils');
 
 
 
-// 增：商品数量
-Router.post('/plus', async (req, res) => {
-    let { username, password, age, gender } = req.body;
-    let data
+Router.delete('/', async(req, res) => {
+    let { filmId } = req.body;
+    console.log(filmId);
     try {
-        //两个参数（colname/数据库名，data/传入的数据）
-        insert('goods', { id });//{username,password,age,gender}
-        res.send(formatData())
+           remove('film', { filmId: filmId })
+           res.send(formatData())
     } catch (err) {
         res.send(formatData({ code: 0 }))
     }
 })
+
 
 // 查（获取所有商品数据）：get /user
 Router.get('/', async (req, res) => {
