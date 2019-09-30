@@ -1,0 +1,14 @@
+.ant-col-5{
+    text-align: right;
+    line-height: 32px;
+    margin-right: 15px;
+    height: 100%;
+}
+
+.addmove-item{
+    height: 50px;
+}
+
+.btn{
+    text-align: center;
+}

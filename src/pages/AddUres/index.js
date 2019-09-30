@@ -4,7 +4,7 @@ import { Table, Button } from 'antd';
 
 const columns = [
     {
-      title: '#',
+      title: '序号',
       dataIndex: 'index',
       key: 'index',
       render: idx => {idx+1},
@@ -37,7 +37,7 @@ const columns = [
 
   const data = []
 
-class UrseLsit extends React.Component{
+class Cinema extends React.Component{
     render(){
         return <div>
                    <Table columns={columns} dataSource={data} />
@@ -45,7 +45,7 @@ class UrseLsit extends React.Component{
     }
 }
 
-export default UrseLsit
+export default Cinema
 
 
 

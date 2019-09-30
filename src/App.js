@@ -48,4 +48,4 @@ let mapStateToProps = (state) => {
   }
 }
 App = connect(mapStateToProps)(App);
-export default App;
+export default withRouter(App)

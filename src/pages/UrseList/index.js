@@ -4,7 +4,7 @@ import { Table, Button } from 'antd';
 
 const columns = [
     {
-      title: '序号',
+      title: '#',
       dataIndex: 'index',
       key: 'index',
       render: idx => {idx+1},
@@ -37,7 +37,7 @@ const columns = [
 
   const data = []
 
-class AddUrse extends React.Component{
+class UrseList extends React.Component{
     render(){
         return <div>
                    <Table columns={columns} dataSource={data} />
@@ -45,7 +45,7 @@ class AddUrse extends React.Component{
     }
 }
 
-export default AddUrse
+export default UrseList
 
 
 

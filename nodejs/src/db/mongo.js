@@ -7,7 +7,11 @@ const { MongoClient, ObjectId } = mongodb;
 
 //连接mongoDB
 const connect = () => {
+<<<<<<< HEAD
     return new Promise((resolve) => {
+=======
+    return new Promise((resolve, reject) => {
+>>>>>>> f05211ba079cee5d5f23d7a760eb69f84622284b
         MongoClient.connect(DBurl, { useNewUrlParser: true, useUnifiedTopology: true }, async (err, client) => {
             // err:连接失败时的错误信息，默认为null
             // client：连接数据库的客户端
@@ -46,7 +50,10 @@ exports.remove = async (colName, query) => {
 
     //  获取集合
     let collection = db.collection(colName);
+<<<<<<< HEAD
     // console.log(query, query._id, ObjectId(query._id))
+=======
+>>>>>>> f05211ba079cee5d5f23d7a760eb69f84622284b
     if (query._id) {
         query._id = ObjectId(query._id);
     }
@@ -61,6 +68,7 @@ exports.update = async (colName, query, data) => {
     // colName：集合名称
     // query: 查询条件
     // data: 更新的数据
+<<<<<<< HEAD
     let { db, client } = await connect();
     // console.log(query, data)
     if (query._id) {
@@ -74,13 +82,29 @@ exports.update = async (colName, query, data) => {
 
     collection.update(query, data)
 
+=======
+    // console.log(query, data)
+    let { db, client } = await connect();
+
+    if (query._id) {
+        query._id = ObjectId(query._id);
+    }
+    //  获取集合
+    let collection = db.collection(colName);
+
+    collection.updateMany(query, data)
+>>>>>>> f05211ba079cee5d5f23d7a760eb69f84622284b
 
     client.close();
 }
 
 
 // @查
+<<<<<<< HEAD
 exports.find = async (colName, query = {}, { sort, limit, skip, asc, _id, username } = {}) => {
+=======
+exports.find = async (colName, query = {}, { sort, limit, skip, asc, name } = {}) => {
+>>>>>>> f05211ba079cee5d5f23d7a760eb69f84622284b
     // colName：集合名称
     // query: 查询条件
     // data: 更新的数据
@@ -91,6 +115,7 @@ exports.find = async (colName, query = {}, { sort, limit, skip, asc, _id, userna
 
     //  针对id进行处理
     // '5d5667d8f174c9ca8ea897d8' -> ObjectId("5d5667d8f174c9ca8ea897d8")
+<<<<<<< HEAD
 
     if (query._id) {
 
@@ -100,6 +125,16 @@ exports.find = async (colName, query = {}, { sort, limit, skip, asc, _id, userna
     let result = collection.find(query);
     if (username) {
         result = collection.find({ username: username });
+=======
+    console.log(query._id)
+    if (query._id) {
+        query._id = ObjectId(query._id);
+    }
+
+    let result = collection.find(query);
+    if (name) {
+        result = collection.find({ name: eval("/" + name + "/i") })
+>>>>>>> f05211ba079cee5d5f23d7a760eb69f84622284b
     }
 
     // 筛选
@@ -116,10 +151,13 @@ exports.find = async (colName, query = {}, { sort, limit, skip, asc, _id, userna
     if (skip) {
         result = result.skip(skip);
     }
+<<<<<<< HEAD
     if (_id) {
         _id = ObjectId(_id);
         result = collection.find({ _id });
     }
+=======
+>>>>>>> f05211ba079cee5d5f23d7a760eb69f84622284b
 
     let data = await result.toArray();
 
