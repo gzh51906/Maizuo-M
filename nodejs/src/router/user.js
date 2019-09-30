@@ -3,17 +3,6 @@ const express = require('express');
 const Router = express.Router();
 
 const { insert, remove, find } = require('../db/mongo');
-<<<<<<< HEAD
-const { formatData } = require('../utils')
-
-// 增：注册用户
-Router.post('/reg', async (req, res) => {
-    let { user, name, password, phone, sex, brit, mail, text } = req.body;
-    // let data
-    try {
-        insert('M_userlist', { user, name, password, phone, sex, brit, mail, text });//{username,password,age,gender}
-        res.send(formatData())
-=======
 const { formatData, token } = require('../utils')
 
 
@@ -102,13 +91,11 @@ Router.get('/check', async (req, res) => {
         } else {
             res.send(formatData())
         }
->>>>>>> f05211ba079cee5d5f23d7a760eb69f84622284b
     } catch (err) {
         res.send(formatData({ code: 0 }))
     }
 })
 
-<<<<<<< HEAD
 // 查
 Router.get('/login', async (req, res) => {
 
@@ -120,7 +107,6 @@ Router.get('/login', async (req, res) => {
     res.send(formatData({ data }))
 })
 
-=======
 //验证登录及密码 
 Router.post('/login', async (req, res) => {
     let { phone } = req.body;
@@ -170,6 +156,5 @@ Router.get('/:id', async (req, res) => {
     let data = await find('user', { _id: id });
     res.send(formatData({ data }))
 })
->>>>>>> f05211ba079cee5d5f23d7a760eb69f84622284b
 
 module.exports = Router;
