@@ -9,7 +9,7 @@ import TabLsit from '../TabLsit/UrseLsit'
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
-class Home extends React.Component{
+class Home extends React.Component {
 
   state = {
     collapsed: false,
@@ -59,7 +59,7 @@ class Home extends React.Component{
               <Breadcrumb.Item>User</Breadcrumb.Item>
               <Breadcrumb.Item>Bill</Breadcrumb.Item>
             </Breadcrumb>
-            <TabLsit/>
+            <TabLsit />
           </Content>
           <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
         </Layout>

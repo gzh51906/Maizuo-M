@@ -41,6 +41,7 @@ module.exports = {
                     loader: 'babel-loader',
                     options: {
                         presets: ['@babel/preset-react'],
+                        "babelrc": false,
                         plugins: [
                             ["import", {
                                 "libraryName": "antd",
@@ -49,6 +50,7 @@ module.exports = {
                             }],
                             ['@babel/plugin-proposal-decorators', { legacy: true }],
                             '@babel/plugin-proposal-class-properties',
+                            "dynamic-import-webpack"
                         ]
                     }
                 },

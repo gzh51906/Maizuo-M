@@ -1,24 +1,51 @@
-import React from 'react';
-import { Route, Redirect, Switch } from 'react-router-dom';
+import React, { Component } from 'react';
+
+import { Route, Redirect, Switch, withRouter } from 'react-router-dom';
+import { Menu, Icon, Layout } from 'antd';
+const { Footer, Content } = Layout;
+import { connect } from 'react-redux'
 import Home from '~/Home'
 import Login from '~/Login'
-import Admin from '~/admin'
-class App extends React.Component {
+
+class App extends Component {
   state = {
-    current: '/home',
+
   }
+  componentDidMount() {
+    // let token = localStorage.getItem('Authorization')
+    // this.setState({
+    //     token
+    // })
+  }
+
   render() {
-    return <div>
-      <Switch>
-        <Route path="/home" component={Home} />
-        <Route path="/login" component={Login} />
-        <Route path="/admin" component={Admin} />
-        <Route path="/notfound" render={() => <div>404</div>} />
-        <Redirect from="/" to="/login" exact />
-        <Redirect from="*" to="/notfound" />
-      </Switch>
-    </div>
+    let { isLogin } = this.props;
+    console.log(isLogin);
+    return (
+      <div>
+        <Layout style={{ width: '100%' }}>
+          <Content>
+            <Switch>
+              <Route path="/home" component={Home} />
+              <Route path="/login" component={Login} />
+              <Route path="/notfound" render={() => <div>404</div>} />
+              <Redirect from="/" to="/login" exact />
+              {/* 404 一定要写在最后面*/}
+              <Redirect from="*" to="/notfound" />
+            </Switch>
+          </Content>
+
+        </Layout>
+      </div >
+    )
   }
 }
+App = withRouter(App);//返回一个新的组件 
 
-export default App
+let mapStateToProps = (state) => {
+  return {
+    isLogin: state.user.isLogin
+  }
+}
+App = connect(mapStateToProps)(App);
+export default App;

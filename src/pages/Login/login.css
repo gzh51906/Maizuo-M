@@ -18,6 +18,8 @@ body {
 
 .ant-form {
   width: 400px;
+  background: #fff;
+  height: 220px;
   position: absolute;
   top: 40%;
   left: 50%;
@@ -37,9 +39,9 @@ body {
 }
 
 .ant-btn-primary {
-  width: 400px;
+  width: 350px;
   position: absolute;
-  top: 40px;
+  top: 0;
   left: 0;
 }
 
@@ -47,4 +49,9 @@ body {
   position: absolute;
   left: 0;
   top: 80px;
+}
+
+.ant-col {
+  width: 350px;
+  margin-left: 25px;
 }
